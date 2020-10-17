@@ -20,7 +20,7 @@ function logErrors(err, req, res, next) {
 // If error is a boom error
 function wrapErrors(err, req, res, next) {
   if (!err.isBoom) {
-    next(boom.badImplementation(err));
+    next(boom.notFound(err));
   }
 
   next(err);

@@ -8,11 +8,20 @@ function patientApi(app) {
   const router = express.Router();
   app.use('/api/patient', router);
 
+  const patientService = new PatientService();
+
   router.post('/session', validationHandler(createSessionSchema), async (req, res, next) => {
+    const data = req.body;
+
     try {
+      const hours = await patientService.createSession(data);
+      if (!hours) {
+        next(boom.notFound());
+      }
+
       res.status(200).json({
-        data: req.body,
-        message: "Session Created"
+        data: hours,
+        message: 'Session Created',
       });
     } catch (error) {
       next(error);
