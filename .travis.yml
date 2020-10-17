@@ -1,0 +1,29 @@
+
+language: node_js
+cache:
+  directories:
+    - node_modules
+    - ~/.npm
+node_js:
+  - '12.18.3'
+git:
+  depth: 3
+script:
+  - npm test
+notifications:
+  slack: 
+    secure: "vwyDV1rTTEuB+b3jq8MESyzgPy5ZEDNriPuPirvhK74rjLVMA25VuZvIK+JvLrrBKYc9Za6bqGlJzlLFz7pHgDFhNyDsFMnM/DDIgvSKQZ86JvJEjqf+fpY5yAP0/XCAm8CqXF/fr3RnueMSKIsBg/UwXaNJxzQ8W0bSdRHeePwX+xUBamkFybhjSsX240Ef4Pk/ebxFbYK7T4vYfU2zW97WHFL1mLcG/wVKMsmeMCJrnamjYeXIPCmd3tAab5tzlCZ9rRW85Jt9u6iCT9dHMMIyqbOA/ZHVNdp93l1vm908XErY0z6xm12M6CEeRDVU1JC3oAsz/roVhCh2QWv0/diEpVZiuFDLQ+YSQHqMqKtIGD+hWe04PLzVifTLszco2u04JBFsUMc3w4ENO14m5JmaK0SMd2HuZkk6iOwh7wsCbhLogl34IdTEVYLNREIR1n2YY3EXMztdjkadQc3cCH9bwzS9McJFkZarZAudD2AfPxb3JdN8wR04plM1CTgLMjEgkea1ypsnJvcOlZWj7wzoQAYfuB7xkSzegRjiT7EC7Cfx3XZtH6q9nyT3A0AuiBgAcUhs5Q9WXOgPFRXSvygUiZZizwglQxDoi0AsuIcSfPMN2MImqqkYkysAggpCBPiErSXUcSoR/JNNvqJ2lLoXMRCxNSmt7FWGQv1l0fg="
+    recipients:
+      - josephsiul15@gmail.com
+    on_success: always
+    on_failure: always
+deploy:
+    provider: elasticbeanstalk
+    access_key_id:
+      secure: "Encrypted <access-key-id>="
+    secret_access_key:
+      secure: "Encypted <secret-access-key>="
+    region: "us-east-1"
+    app: "Terapify"
+    env: "terapify-env"
+    bucket_name: "terapify-S3-bucket"

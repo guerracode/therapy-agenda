@@ -2,14 +2,12 @@ FROM node:lts
 
 LABEL author="Jose Luis Chavez"
 
-ENV NODE_ENV=production
-ENV PORT=3000
+COPY [".", "/usr/src/"]
 
-COPY . /var/www
-WORKDIR /var/www
+WORKDIR /usr/src
 
 RUN npm install
 
-EXPOSE $PORT
+EXPOSE 3000
 
-ENTRYPOINT ["npm", "start"]
+CMD ["npm", "run", "dev"]
