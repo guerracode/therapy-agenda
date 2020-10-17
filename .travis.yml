@@ -12,10 +12,8 @@ script:
   - npm test
 deploy:
     provider: elasticbeanstalk
-    access_key_id:
-      secure: "$AWSAccessKeyId"
-    secret_access_key:
-      secure: "$AWSSecretKey"
+    access_key_id: "$AWSAccessKeyId"
+    secret_access_key: "$AWSSecretKey"
     region: "us-east-2"
     app: "Terapify"
     env: "Terapify-env"
