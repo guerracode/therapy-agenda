@@ -13,9 +13,9 @@ script:
 deploy:
     provider: elasticbeanstalk
     access_key_id:
-      secure: "gPbmjtbj2fcMUnmFd0x91DwP/hqrn0KEba8/CqPpOCw/meYabJLVyS0mNp8UhBkJumgyTpNSqhFonQ/Hd+hu+srxfR3l3aeYN9Qq37tIf8dmS2Eq/ForYEBtWfr8zofjBBhPvJodG/yvlDXdm/+Ib03IhdSBRYcYrPTRSNXRcYVBWe5/SKEbL6zEMiPZ0p4dHbrz6ctxKV7jgXA/ZV3DkICx8eYjQAIdRkofPKtL3DIYcxV+wVZEo060oX9RAngkOCqJesGKg08QfJlz2MwHWzYUeMVJXukdXUfCQwkE6nojCTYkZz9z1UxiKhaVLWecDn8jM9IY2vdZh40+eppmtwIbGj1SfEiwxmyeTk+NqkzhzV+aVDUT6AwY10Hn9rw971SaRrAv0r1QnPXsoieAYdeF/OJ2ATClOVdl4701ddB1Iz2+InHG0E0WyCskKpx0DTxjw8QVxERAnkZ8/p77jSWyloTsyxOfQAREU2np0rWJhmO0ImtK6/KdWF13jy+fsRlTtF3fI7JdTvUIRPhyzdXJIwlBxu7Akda95NPLCvOguBUI+gX9Tn2/6ZmRPWPi/ZVGmhKDxT4j++MsnF54aIuX2rvTR9E5061mrsaBvizVFoFEWnnhyul3tfSIRaQUrYJOkrb0FaFfFZCoKKvdwoSurv1PKEt6CHNbt3fHpRE="
+      secure: "$AWSAccessKeyId"
     secret_access_key:
-      secure: "fEHLVLdIs+N8Iz3jFp1sjfQK0p7txmBEtsNNqCmP/zAMvi7VDb/udyguksy7pnwHG3/zJuM9q28zX0+toDL1CgWSg34P31llB0x96hEirG42fNPiCqH9/6xDuZEYyfepjTtuH9Lw+7+nkquWHaNsi04uctgxhTO0ymCmaH8sXHNQvsxz2IqP2HMzWfRIcNSmnV1nNRoRF8UyAbRlEHMsh1pwcIV4J9C/E6NwEtEQkEjIBuBh92y26B2z9ln9Hoii1MK0fRqC6UI0T4J9BhQXKzniW+iUXrIg6t+eqvsHAQ/u2e4iy2AuGCVWC8ZYSNSjD+iFdu/y+Cdtebo+KqfhTR95X+cz7UMnCQiIAK+gd1IgKZxWs/ODHJUru4L89VbxNLFje5RQQQSVYFufP1/38lNWnGTqzrH6dnhkBvxDt8JWq3FWHrW9DQ1uBZHgVXaAXh5ZyVyN0wn5cRmcTGHPpCdG7zSnCF4VIQFKWOka+B5FD9sRE9p4MRnPI9CuxbIkGvC4JlsvtJDbw9KPoHxoN78AoAlR6ZRHfptO0Pk/20W7UgJWBBjK2OIbfl2cRWr77FfF3SeupiARB/bMV0rLNwYnyLjzv14Mc+0mMS6jg1Zd7mF+tyssRB9dltfp6G9ivXjcUdeuQVEQy56MDEGSxf2mmeGswWhJhk0BXFypVtI="
+      secure: "$AWSSecretKey"
     region: "us-east-2"
     app: "Terapify"
     env: "Terapify-env"
