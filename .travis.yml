@@ -17,6 +17,6 @@ deploy:
     region: "us-east-2"
     app: "Terapify"
     env: "Terapify-env"
-    bucket_name: "terapify-S3-bucket"
+    bucket_name: "terapify-s3-bucket"
     on:
       branch: main
