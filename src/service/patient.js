@@ -4,55 +4,71 @@ const mongo = require('../lib/mongo');
 
 class PatientService {
   constructor() {
-    this.patient = 'Patient_Sessions';
+    this.patientSessions = 'Patient_Sessions';
     this.schedule = 'Therapist_Agenda';
+    this.patient = 'Patient';
   }
 
+  // Update Session Hours to remove the hours that are now occupied
+  async updateSession(id, date, hour) {
+    const db = await mongo();
+
+    let exists = await db.collection(this.schedule).updateOne(
+      {
+        psy: ObjectID(id),
+        'days.day': date,
+      },
+      { $pull: { 'days.$.hours': hour } }
+    );
+
+    exists = exists.result.nModified;
+    return exists;
+  }
+
+  // Create a new Patient Session
   async createSession(data) {
+    // Format date and hours to manipulate them
     const date = moment(data.start_time).format('YYYY-MM-DD');
     const hour = moment(data.start_time).format('H:00');
     let dateFinish;
     let hourFinish;
-    let existsFinish;
 
     try {
       const db = await mongo();
 
+      // If duration is > 60 to update the second time two
       if (data.duration > 60) {
         dateFinish = moment(data.end_time).format('YYYY-MM-DD');
         hourFinish = moment(data.end_time).format('H:00');
 
-        existsFinish = await db.collection(this.schedule).updateOne(
-          {
-            psy: ObjectID(data.psy),
-            'days.day': dateFinish,
-          },
-          { $pull: { 'days.$.hours': hourFinish } }
-        );
-        console.log('EXISTS', existsFinish.result.nModified);
-        existsFinish = existsFinish.result.nModified;
+        const existFinish = await this.updateSession(data.psy, dateFinish, hourFinish);
+        if (existFinish !== 1) {
+          throw new Error('Sessions not Available');
+        }
       }
-      // Check if time is available and update
-      let exists = await db.collection(this.schedule).updateOne(
-        {
-          psy: ObjectID(data.psy),
-          'days.day': date,
-        },
-        { $pull: { 'days.$.hours': hour } }
-      );
 
-      console.log('EXISTS', exists.result.nModified);
-      exists = exists.result.nModified;
+      // Check if time is available and update
+      const exists = await this.updateSession(data.psy, date, hour);
 
       let session;
       if (exists === 1) {
-        session = await db.collection(this.patient).insertOne(data);
-        console.log('SESSION', session);
+        session = await db.collection(this.patientSessions).insertOne(data);
       } else {
         throw new Error('Session not Available');
       }
 
+      // Return session created
       return session.ops;
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+
+  async createPatient(data) {
+    try {
+      const db = await mongo();
+      const patient = await db.collection(this.patient).insertOne(data);
+      return patient.ops;
     } catch (error) {
       throw new Error(error);
     }
