@@ -1,5 +1,6 @@
 const { ObjectID } = require('mongodb');
-const moment = require('moment');
+// const moment = require('moment');
+const moment = require('moment-timezone');
 const mongo = require('../lib/mongo');
 
 class PatientService {
@@ -29,7 +30,7 @@ class PatientService {
   async createSession(data) {
     // Format date and hours to manipulate them
     const date = moment(data.start_time).format('YYYY-MM-DD');
-    const hour = moment(data.start_time).format('H:00');
+    const hour = moment(data.start_time).tz('America/Mexico_City').format('H:00');
     let dateFinish;
     let hourFinish;
 
@@ -39,7 +40,7 @@ class PatientService {
       // If duration is > 60 to update the second time two
       if (data.duration > 60) {
         dateFinish = moment(data.end_time).format('YYYY-MM-DD');
-        hourFinish = moment(data.end_time).format('H:00');
+        hourFinish = moment(data.end_time).tz('America/Mexico_City').format('H:00');
 
         const existFinish = await this.updateSession(data.psy, dateFinish, hourFinish);
         if (existFinish !== 1) {

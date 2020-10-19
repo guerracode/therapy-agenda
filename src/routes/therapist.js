@@ -1,7 +1,7 @@
 const express = require('express');
 const boom = require('@hapi/boom');
 const moment = require('moment');
-const TherapistService = require('../service/therapist');
+const TherapistService = require('../services/therapist');
 const validationHandler = require('../util/middleware/validationHandler');
 const { createScheduleSchema } = require('../util/schemas/schedule');
 const { createCreateScheduleSchema } = require('../util/schemas/createSchedule');
@@ -58,14 +58,14 @@ function therapistApi(app) {
       const data = req.body;
 
       try {
-        const hours = await therapistService.createSchedule(data);
-        if (!hours) {
+        const schedule = await therapistService.createSchedule(data);
+        if (!schedule) {
           next(boom.notFound());
         }
 
-        res.status(200).json({
-          hours,
-          message: 'Schedule obtained correctly',
+        res.status(201).json({
+          data: schedule,
+          message: 'Schedule created correctly',
         });
       } catch (error) {
         next(error);

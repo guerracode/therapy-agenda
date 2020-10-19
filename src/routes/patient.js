@@ -1,6 +1,6 @@
 const express = require('express');
 const boom = require('@hapi/boom');
-const PatientService = require('../service/patient');
+const PatientService = require('../services/patient');
 const validationHandler = require('../util/middleware/validationHandler');
 const { createSessionSchema } = require('../util/schemas/session');
 const { createPatientSchema } = require('../util/schemas/patient');
