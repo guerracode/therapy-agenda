@@ -1,0 +1,772 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Documentación Terapify</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="dccf5025-0126-4ccb-b59e-e4c0398b7acd" class="page mono"><header><h1 class="page-title">Documentación Terapify</h1></header><div class="page-body"><nav id="700a6020-b17f-4ae3-921f-dee7bf96794d" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#190f7d39-30f0-48bf-be71-a2cc16751955"><mark class="highlight-blue">General</mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#41bf2ec0-abda-4aa5-a205-b3b30eb59855"><mark class="highlight-blue">Id&#x27;s de Ejemplo</mark></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#eca97e6d-d0e5-4b51-8b60-03e45fea8045"><mark class="highlight-blue">Obtener horas disponibles de un Terapeuta</mark></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#59afae99-0fbb-4eea-b516-16a02c594dc3"><mark class="highlight-blue">Crear Agenda de un Terapeuta</mark></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#523901b8-b5ca-420d-8de8-83cf1c7e5626"><mark class="highlight-blue">Crear sesión de un Paciente con un Terapeuta</mark></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a8cb3922-c9e4-4885-9959-03154829d36b"><mark class="highlight-blue">Crear a un Terapeuta</mark></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#28c0a5f4-4105-426f-8d6f-957c6aa5639a"><mark class="highlight-blue">Crear a un Paciente</mark></a></div></nav><p id="135d9b89-4acf-45db-853e-70bbb6fd41e4" class="">
+</p><hr id="0e318f4c-602b-453f-9570-aa2560200171"/><h2 id="190f7d39-30f0-48bf-be71-a2cc16751955" class=""><mark class="highlight-blue">General</mark></h2><ul id="7f6ced89-8903-47f2-8f2a-08d848af23d2" class="bulleted-list"><li>Se le hizo deploy de la aplicación por lo tanto se puede hacer pruebas directamente desde una aplicación como Postman.</li></ul><ul id="643d7d87-010e-4e5c-8ea1-09c83b948ee2" class="bulleted-list"><li>La base de datos esta en MongoDB Atlas en un Cluster de Amazon.</li></ul><p id="51ab3926-e763-458f-a4d7-dae3fd312f10" class="">
+</p><p id="22b66fe6-eb2b-40f8-b9e0-2742912762d4" class="">Para mas información de como probar los endpoints visitar el repositorio del proyecto: <a href="https://github.com/guerracode/payment-orders">https://github.com/guerracode/payment-orders</a></p><p id="ac92fcf2-eea6-4f66-ac7c-fe9e11aacf59" class="">
+</p><h3 id="41bf2ec0-abda-4aa5-a205-b3b30eb59855" class=""><mark class="highlight-blue">Id&#x27;s de Ejemplo</mark></h3><p id="f4ec2bac-7501-4f45-b065-77f0130e9b42" class="">Estos son Id&#x27;s de Terapeutas y Pacientes ya registrados en la BD, para hacer las pruebas que se requieran, o puede crear uno desde cero con sus respectivos endpoints.</p><ul id="daae0fec-aaf4-4871-a672-3453ddeb9ba4" class="bulleted-list"><li><code>Terapeuta ID</code>: 5f8a3105d3dceedf5e2dd834, 5f8d3dd25418f6bd7741a03e</li></ul><ul id="0fb3816d-3c58-4629-9ba1-b30a4461ff7c" class="bulleted-list"><li><code>Patient ID</code>: 5f8a328b9515290f4f002f58, 5f8d3c0023520ebbccd4fb37</li></ul><hr id="f65da61b-1c84-4f0e-b313-3b2681501de2"/><p id="6077ab22-8af4-4e7a-861b-ba5f51cb54d0" class="">
+</p><h2 id="eca97e6d-d0e5-4b51-8b60-03e45fea8045" class=""><mark class="highlight-blue">Obtener horas disponibles de un Terapeuta</mark></h2><p id="a6d2cbe9-05f9-49f5-9d54-eb0e6ce8c54e" class="">Endpoint:</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="19763e6d-6b1a-413a-a7d2-0ccc9db3f1f3"><div style="font-size:1.5em"><span class="icon">🌐</span></div><div style="width:100%"><mark class="highlight-teal"><strong>GET</strong></mark><mark class="highlight-orange"> </mark>http://terapify-env.eba-prcfcecp.us-east-2.elasticbeanstalk.com/api/therapist/schedule</div></figure><p id="9cfc88fc-e895-4509-9363-d6183a69265e" class="">
+</p><p id="78eff977-e4b2-43ce-8708-f91d6d30f2f4" class="">Recibe, en formato JSON: </p><ul id="201bf233-4c67-47a7-a87c-41bb081a5197" class="bulleted-list"><li><code>selectedDay</code>:  string</li></ul><ul id="b63e90e6-6ef9-4125-9c13-e0162b2faba0" class="bulleted-list"><li><code>psy</code>: string, id</li></ul><ul id="2147f03b-6022-4336-aada-50bc6f037935" class="bulleted-list"><li><code>duration</code>: string</li></ul><p id="219049f5-35d1-498c-a6d6-80da6aebddc5" class="">
+</p><p id="43c4ee3b-b191-480b-b6e5-d54defacb261" class="">Body Ejemplo:</p><pre id="deb3da01-9e41-4504-ac4c-2acd41a77f30" class="code"><code>{
+  &quot;selectedDay&quot;: &quot;19/10/2020&quot;,
+  &quot;psy&quot;: &quot;5f8d3dd25418f6bd7741a03e&quot;,
+  &quot;duration&quot;: 50
+}</code></pre><p id="14b0b3fc-8fce-4b7a-b410-e081c36513ea" class="">Respuesta Ejemplo:</p><pre id="9c14c6d8-da3b-4169-9c0a-37527497a7c3" class="code"><code>{
+    &quot;hours&quot;: [
+        &quot;12:00&quot;,
+        &quot;14:00&quot;,
+        &quot;17:00&quot;,
+        &quot;20:00&quot;
+    ],
+    &quot;message&quot;: &quot;Schedule obtained correctly&quot;
+}</code></pre><hr id="66e230af-6909-4a1d-80a4-93f506a928b2"/><h2 id="59afae99-0fbb-4eea-b516-16a02c594dc3" class=""><mark class="highlight-blue">Crear Agenda de un Terapeuta</mark></h2><p id="da50710f-eabf-42ee-ba0f-bcb7f5feef75" class="">Endpoint:</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="bd1962dd-1d87-480e-bc3f-2e17d81fe2ba"><div style="font-size:1.5em"><span class="icon">🌐</span></div><div style="width:100%"><mark class="highlight-orange"><strong>POST </strong></mark>http://terapify-env.eba-prcfcecp.us-east-2.elasticbeanstalk.com/api/therapist/createSchedule</div></figure><p id="58ec1258-a3a5-4299-b898-3b1c3cab30ea" class="">
+</p><p id="0ef222fc-4782-41d1-a5f8-97225369c363" class="">Recibe, en formato JSON: </p><ul id="0fb476ee-16d3-45e5-9231-98dd2a8fd313" class="bulleted-list"><li><code>psy</code>:  string, id</li></ul><ul id="7321696f-7f0e-43ff-8a04-689ab3e489e5" class="bulleted-list"><li><code>date</code>: string, format(&#x27;DD/MM/YYYY&#x27;)</li></ul><ul id="94c4e1f4-53b9-4707-834b-badbb592581a" class="bulleted-list"><li><code>workingPlan</code>: object { <code>start</code>: string, <code>end</code>: string }, format(&#x27;HH:MM&#x27;)</li></ul><ul id="6b66b683-2fe7-4ec3-a9b5-2a755c436a41" class="bulleted-list"><li><code>breaks</code>: array, objects { <code>start</code>: string, <code>end</code>: string }, format(&#x27;HH:MM&#x27;)</li></ul><p id="78c1c842-bda6-4197-ab75-d456fc9b0b8b" class="">
+</p><p id="e53e6824-1d3a-4c3e-a1f0-0648d1e11929" class="">Body Ejemplo:</p><pre id="3747b4fd-d3cd-47d5-aac0-a508befaad47" class="code code-wrap"><code>{
+  &quot;psy&quot;: &quot;5f8d3dd25418f6bd7741a03e&quot;,
+  &quot;date&quot;: &quot;19/10/2020&quot;,
+  &quot;workingPlan&quot;: {
+      &quot;start&quot;: &quot;07:00&quot;,
+      &quot;end&quot;: &quot;20:00&quot; 
+  },
+  &quot;breaks&quot;: [
+      {
+          &quot;start&quot;: &quot;15:15&quot;,
+          &quot;end&quot;: &quot;16:15&quot;
+      },
+      {
+          &quot;start&quot;: &quot;18:15&quot;,
+          &quot;end&quot;: &quot;19:15&quot;
+      }
+  ]
+
+}</code></pre><p id="46edec01-5e95-49ec-9ad0-6ca35aaabf92" class="">Respuesta Ejemplo:</p><pre id="9fcc9df4-22f8-4678-9e9d-523ba6a8c4b0" class="code code-wrap"><code>{
+    &quot;hours&quot;: {
+        &quot;psy&quot;: &quot;5f8d3dd25418f6bd7741a03e&quot;,
+        &quot;year&quot;: &quot;2020&quot;,
+        &quot;month&quot;: &quot;October&quot;,
+        &quot;days&quot;: [
+            {
+                &quot;day&quot;: &quot;2020-10-19&quot;,
+                &quot;dayOfWeek&quot;: &quot;Monday&quot;,
+                &quot;workingPlan&quot;: {
+                    &quot;start&quot;: &quot;07:00&quot;,
+                    &quot;end&quot;: &quot;20:00&quot;
+                },
+                &quot;hours&quot;: [
+                    &quot;7:00&quot;,
+                    &quot;8:00&quot;,
+                    &quot;9:00&quot;,
+                    &quot;10:00&quot;,
+                    &quot;11:00&quot;,
+                    &quot;12:00&quot;,
+                    &quot;13:00&quot;,
+                    &quot;14:00&quot;,
+                    &quot;17:00&quot;,
+                    &quot;20:00&quot;
+                ],
+                &quot;breaks&quot;: [
+                    {
+                        &quot;start&quot;: &quot;15:15&quot;,
+                        &quot;end&quot;: &quot;16:15&quot;
+                    },
+                    {
+                        &quot;start&quot;: &quot;18:15&quot;,
+                        &quot;end&quot;: &quot;19:15&quot;
+                    }
+                ]
+            }
+        ],
+        &quot;_id&quot;: &quot;5f8dc8a8dd18db1438bfe1a3&quot;
+    },
+    &quot;message&quot;: &quot;Schedule obtained correctly&quot;
+}</code></pre><hr id="da9faa22-fda3-4201-815f-0c9f7e1c3131"/><h2 id="523901b8-b5ca-420d-8de8-83cf1c7e5626" class=""><mark class="highlight-blue">Crear sesión de un Paciente con un Terapeuta</mark></h2><p id="a1d963d4-3a82-49fa-9ea0-85ecadf3cc5d" class="">Endpoint:</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="17ed86e5-deef-4562-84f3-dee6761aa8cf"><div style="font-size:1.5em"><span class="icon">🌐</span></div><div style="width:100%"><strong><mark class="highlight-orange">POST</mark></strong><strong><mark class="highlight-teal"> </mark></strong>http://terapify-env.eba-prcfcecp.us-east-2.elasticbeanstalk.com/api/patient/session</div></figure><p id="86a5bf73-f7c0-4caa-8ab6-1856fc5b9649" class="">
+</p><p id="ddaf3a66-efac-4f99-af7f-e72ab1b30b85" class="">Recibe, en formato JSON: </p><ul id="5ad906b4-ebac-4d1a-8e02-9b8c3b3f1e8c" class="bulleted-list"><li><code>start_time</code>: string, date format</li></ul><ul id="86fadc42-2c63-4e96-9aa1-60dd1e765968" class="bulleted-list"><li><code>end_time</code>: string, date format</li></ul><ul id="2c7e001f-0bed-4a7a-81a5-f170c0fdf7f1" class="bulleted-list"><li><code>duration</code>: number</li></ul><ul id="d7319cb7-4a22-4549-a11f-ad6bfcb75dfe" class="bulleted-list"><li><code>psy</code>: string, id</li></ul><ul id="93c2dc19-b9ed-4fec-83ce-457ab0a7e9f9" class="bulleted-list"><li><code>patient</code>: string, id</li></ul><p id="56ba02fa-b9a5-4ad4-a8ea-cf4c98bdd023" class="">
+</p><p id="267da2fd-3272-439b-8085-09b86ac3fc70" class="">Body Ejemplo:</p><pre id="c6c43ee2-03e4-4ea9-aa22-2e046f51cc16" class="code"><code>{
+    &quot;start_time&quot;: &quot;2020-10-19T10:15:00-05:00&quot;,
+    &quot;end_time&quot;: &quot;2020-10-19T11:50:00-05:00&quot;,
+    &quot;duration&quot;: 90,
+    &quot;psy&quot;: &quot;5f8d3dd25418f6bd7741a03e&quot;,
+    &quot;patient&quot;: &quot;5f8d3c0023520ebbccd4fb37&quot;
+}</code></pre><p id="7653d63b-34f6-4717-afd1-3fb5f28882c2" class="">Respuesta Ejemplo:</p><pre id="b3e551ba-5a68-400c-961b-4b4ed5d8bdb9" class="code code-wrap"><code>{
+    &quot;data&quot;: [
+        {
+            &quot;start_time&quot;: &quot;2020-10-19T10:15:00-05:00&quot;,
+            &quot;end_time&quot;: &quot;2020-10-19T11:50:00-05:00&quot;,
+            &quot;duration&quot;: 90,
+            &quot;psy&quot;: &quot;5f8d3dd25418f6bd7741a03e&quot;,
+            &quot;patient&quot;: &quot;5f8d3c0023520ebbccd4fb37&quot;,
+            &quot;_id&quot;: &quot;5f8de038c25f541a96469990&quot;
+        }
+    ],
+    &quot;message&quot;: &quot;Session Created&quot;
+}</code></pre><hr id="ac3b5e42-237e-48ba-aa14-ffabaf6b105c"/><h2 id="a8cb3922-c9e4-4885-9959-03154829d36b" class=""><mark class="highlight-blue">Crear a un Terapeuta</mark></h2><p id="d57ba0f0-676a-4452-ad0c-5d424b304a7f" class="">Endpoint:</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f7f75817-5323-4a47-b842-fe738d086d05"><div style="font-size:1.5em"><span class="icon">🌐</span></div><div style="width:100%"><strong><mark class="highlight-orange">POST</mark></strong><strong><mark class="highlight-teal"> </mark></strong>http://terapify-env.eba-prcfcecp.us-east-2.elasticbeanstalk.com/api/therapist</div></figure><p id="655dd477-bc75-49ec-8579-d2b41886c30d" class="">
+</p><p id="b8afdbb3-a15e-4da4-8908-bc7684bf551d" class="">Recibe, en formato JSON: </p><ul id="c095ebcb-458f-43d9-9166-8645b520eac5" class="bulleted-list"><li><code>name</code>: string</li></ul><ul id="ff0ad688-d7b4-41a2-8d01-9e42a72b3f2a" class="bulleted-list"><li><code>tags</code>: array, strings</li></ul><ul id="4284c680-c39e-4e15-b461-f8c6f75f4262" class="bulleted-list"><li><code>description</code>: string</li></ul><ul id="e8bffa64-3aa9-4546-9a42-2d0db57d1f8a" class="bulleted-list"><li><code>cedule</code>: string</li></ul><p id="e8abf9b2-57ac-46bb-972a-8865b3a17526" class="">
+</p><p id="f7a28665-9185-44d0-a136-8c2b41e72370" class="">Body Ejemplo:</p><pre id="2f60903e-bb20-495f-9c92-20840d673a7c" class="code code-wrap"><code>{
+    &quot;name&quot;: &quot;Lauraisabel Ortíz Gómez&quot;,
+    &quot;tags&quot;: [
+        &quot;ataques de pánico&quot;,
+        &quot;depresión&quot;,
+        &quot;manejo de estrés&quot;,
+        &quot;orientación sexual&quot;,
+        &quot;problemas de relación&quot;
+    ],
+    &quot;description&quot;: &quot;Mi objetivo es establecer una dinámica que te permita encontrar o desarrollar recursos emocionales para hacer frente a cuestiones complejas de la vida, así como apoyarte a (re)descubrir tu deseo y apuntar a ello.&quot;,
+    &quot;cedule&quot;: &quot;8387065&quot;
+}</code></pre><p id="71d1f636-c037-4033-8765-df2416b76c82" class="">Respuesta Ejemplo:</p><pre id="2ffb3f34-45b2-4711-bdbc-9dcdd0c7f53b" class="code code-wrap"><code>{
+    &quot;data&quot;: [
+        {
+            &quot;name&quot;: &quot;Lauraisabel Ortíz Gómez&quot;,
+            &quot;tags&quot;: [
+                &quot;ataques de pánico&quot;,
+                &quot;depresión&quot;,
+                &quot;manejo de estrés&quot;,
+                &quot;orientación sexual&quot;,
+                &quot;problemas de relación&quot;
+            ],
+            &quot;description&quot;: &quot;Mi objetivo es establecer una dinámica que te permita encontrar o desarrollar recursos emocionales para hacer frente a cuestiones complejas de la vida, así como apoyarte a (re)descubrir tu deseo y apuntar a ello.&quot;,
+            &quot;cedule&quot;: &quot;8387065&quot;,
+            &quot;_id&quot;: &quot;5f8e2be1c25f541a96469991&quot;
+        }
+    ],
+    &quot;message&quot;: &quot;Therapist Created&quot;
+}</code></pre><hr id="30191964-ca70-44f8-b3b3-fd3f583f9192"/><h2 id="28c0a5f4-4105-426f-8d6f-957c6aa5639a" class=""><mark class="highlight-blue">Crear a un Paciente</mark></h2><p id="0e688efa-afdc-4a13-87c1-ad70075cae67" class="">Endpoint:</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="78e25e19-17fc-40ef-b3f3-bc02cae7f671"><div style="font-size:1.5em"><span class="icon">🌐</span></div><div style="width:100%"><strong><mark class="highlight-orange">POST</mark></strong><mark class="highlight-orange"> </mark>http://terapify-env.eba-prcfcecp.us-east-2.elasticbeanstalk.com/api/patient</div></figure><p id="815d2866-cbab-4f54-af7d-ab7805c68b99" class="">
+</p><p id="53cddce2-964e-4591-b292-a3b4723b39bc" class="">Recibe, en formato JSON: </p><ul id="85455c56-3117-41d4-a775-6643260b6914" class="bulleted-list"><li><code>username</code>:  string</li></ul><ul id="f59f8f2c-9618-43e5-90fb-7f7209025ade" class="bulleted-list"><li><code>name</code>: string</li></ul><ul id="bc52567f-1779-4593-8e7d-e8820542c1ce" class="bulleted-list"><li><code>email</code>: string</li></ul><p id="5badc3a1-a282-4172-abdd-3f710f1d3d67" class="">
+</p><p id="d1ecf400-851d-48d2-877e-650c98a85013" class="">Body Ejemplo:</p><pre id="971b9e35-7d19-42c4-93c0-70787e7d2656" class="code"><code>{
+    &quot;username&quot;: &quot;mario&quot;,
+    &quot;name&quot;: &quot;Mario Perez&quot;,
+    &quot;email&quot;: &quot;mario@gmail.com&quot;
+}</code></pre><p id="4c52daa2-a5ef-4437-ab26-1fcb5014ffc7" class="">Respuesta Ejemplo:</p><pre id="dfb13e66-1d21-40f3-a68a-82d88fec56da" class="code"><code>{
+    &quot;data&quot;: [
+        {
+            &quot;username&quot;: &quot;mario&quot;,
+            &quot;name&quot;: &quot;Mario Perez&quot;,
+            &quot;email&quot;: &quot;mario@gmail.com&quot;,
+            &quot;_id&quot;: &quot;5f8dc415dd18db1438bfe1a2&quot;
+        }
+    ],
+    &quot;message&quot;: &quot;Patient Created&quot;
+}</code></pre><p id="718ac0a2-16bc-4d6f-98e1-5931a426c8c1" class="">
+</p></div></article></body></html>
